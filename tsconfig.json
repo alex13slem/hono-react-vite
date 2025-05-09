@@ -9,7 +9,10 @@
     "types": ["node"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["./app/*"]
+    }
   },
   "exclude": ["node_modules", "dist"]
 }

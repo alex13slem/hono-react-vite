@@ -1,31 +1,16 @@
 import { serve } from "@hono/node-server";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
+import api from "./api";
+import entry from "./entry";
 
-const app = new Hono();
-
-app.use("/static/*", serveStatic({ root: "./dist/" }));
-
-app.get("/api/hello", (c) => c.json({ message: "Hello from server" }));
-
-app.get("*", (c) => {
-  return c.html(`
-    <html>
-      <head>
-        <meta charSet="utf-8" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        ${
-          import.meta.env.PROD
-            ? `<script type="module" src="/static/client.js"></script>`
-            : `<script type="module" src="/app/client/index.tsx"></script>`
-        }
-      </head>
-      <body><div id="root"></div></body>
-    </html>
-  `);
-});
+const app = new Hono()
+  .use("/static/*", serveStatic({ root: "./dist/" }))
+  .route("api", api)
+  .get("*", (c) => c.html(entry({ title: "Hono React Vite" })));
 
 export default app;
+export type AppType = typeof app;
 
 if (import.meta.env.PROD) {
   serve(

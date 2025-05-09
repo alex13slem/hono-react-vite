@@ -1,5 +1,6 @@
 import devServer from "@hono/vite-dev-server";
 import nodeAdapter from "@hono/vite-dev-server/node";
+import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig(({ mode }) => {
@@ -16,6 +17,11 @@ export default defineConfig(({ mode }) => {
         },
         emptyOutDir: false,
         copyPublicDir: false,
+      },
+      resolve: {
+        alias: {
+          "@": resolve(__dirname, "app"),
+        },
       },
     };
   } else {
@@ -41,6 +47,12 @@ export default defineConfig(({ mode }) => {
           entry: "./app/server/index.ts",
         }),
       ],
+
+      resolve: {
+        alias: {
+          "@": resolve(__dirname, "app"),
+        },
+      },
     };
   }
 });
