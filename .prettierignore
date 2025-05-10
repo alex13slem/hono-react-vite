@@ -1,0 +1,20 @@
+# Ignore artifacts:
+node_modules
+dist
+build
+coverage
+
+# Ignore configs:
+*.config.js
+*.config.ts
+*.json
+
+# Ignore compiled files:
+*.js
+*.d.ts
+*.tsbuildinfo
+
+# Ignore config files:
+eslint.config.js
+.prettierrc
+.prettierignore

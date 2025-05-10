@@ -20,6 +20,6 @@ if (import.meta.env.PROD) {
     },
     (info) => {
       console.log(`Application is running on ${info.port}`);
-    }
+    },
   );
 }

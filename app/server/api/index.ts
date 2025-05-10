@@ -1,7 +1,7 @@
-import { Hono } from "hono";
+import { Hono } from 'hono';
 
-const routes = new Hono().get("/hello", (c) =>
-  c.json({ message: "Hello from API" })
+const api = new Hono().get('/hello', (c) =>
+  c.json({ message: 'Hello from API' }),
 );
 
-export default routes;
+export default api;

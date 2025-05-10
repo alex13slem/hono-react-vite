@@ -1,4 +1,4 @@
-import { renderToString } from "react-dom/server";
+import { renderToString } from 'react-dom/server';
 
 const entry = ({ title }: { title: string }) =>
   renderToString(
@@ -16,6 +16,6 @@ const entry = ({ title }: { title: string }) =>
       <body>
         <div id="root"></div>
       </body>
-    </html>
+    </html>,
   );
 export default entry;
